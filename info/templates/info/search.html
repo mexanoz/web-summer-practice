@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Результаты поиска – {% endblock %}
+
+{% block next_logout %}/search{% endblock %}
+{% block next_login %}/search{% endblock %}
+
+{% block content %}
+	<div class="forms">
+		<form action="{% url 'info:search_results' %}" method="get">{% csrf_token %}
+			<div class="form_name">
+				<label for="name">ФИО:</label>
+				<input id="name" name="name" type="text">
+			</div>
+			<div class="form_position">
+				<p>Должность:</p>
+				<select id="position" name="position" size="8" multiple>
+					{% for position in position_list %}
+					<option value="{{position.id}}" selected>{{position|capfirst}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form_education_level">
+				<p>Учёная степень:</p>
+				<select id="education_level" name="education_level" size="8" multiple>
+					<option value="" selected>Нет</option>
+					{% for education_level in education_level_list %}
+					<option value="{{education_level|first}}" selected>{{education_level|first|capfirst}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form_education_field">
+				<p>Область:</p>
+				<select id="education_field" name="education_field" size="8" multiple>
+					{% for education_field in education_field_list %}
+					<option value="{{education_field|first}}" selected>{{education_field|first|capfirst}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form_room">
+				<p>Аудитория:</p>
+				<select id="room" name="room" size="8" multiple>
+					<option value="" selected>Нет</option>
+					{% for room in room_list %}
+					<option value="{{room.id}}" selected>{{room}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form_lessons">
+				<p>Обеспечиваемые занятия:</p>
+				<select id="lesson" name="lesson" size="8" multipls>
+					{% for lesson in lesson_list %}
+					<option value="{{lesson.id}}">{{lesson}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form_submit">
+				<input type="submit" value="Поиск" class="submit">
+			</div>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{teacher.name}} – {% endblock %}
+
+{% block next_logout %}{% url 'info:detail' teacher.id %}{% endblock %}
+{% block next_login %}{% url 'info:detail' teacher.id %}{% endblock %}
+
+{% block content %}
+	{% load static %}
+	<div class="info-header">
+		{% if teacher.photo %}
+		<img src="{{teacher.photo.url}}" class="teacher-photo" width=150>
+		{% else %}
+		<img src="{% static 'info/placeholder.png' %}" class="teacher-photo" width=150>
+		{% endif %}
+		<div class="info-header-text">
+			<h1>{{teacher.name}}</h1>
+			<p>{{teacher.position|capfirst}}{% if teacher.education %}, {{teacher.education}}{% endif %}</p>
+			<p>Местоположение: 3 корпус{% if teacher.room %}, аудитория {{teacher.room.number}}{% endif %}.</p>
+		</div>
+		{% if user.is_authenticated %}
+		<a class="update-button" href="{% url 'info:update' teacher.id %}">Редактировать</a>
+		{% endif %}
+	</div>
+	<div class="info-text">
+		{% if teacher.additional_work %}
+		<p>{{teacher.additional_work}}</p>
+		{% endif %}
+		<h3>Обеспечиваемые дисциплины:</h3>
+		<ul>
+			{% for lesson in teacher.lessons.all %}
+			<li>{{lesson.discipline.name}}, {{lesson.lesson_type.name}}</li>
+			{% empty %}
+			<li>Нет обеспечиваемых дисциплин.</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

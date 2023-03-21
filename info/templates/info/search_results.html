@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block next_logout %}{{request.get_full_path}}{% endblock %}
+{% block next_login %}{{request.get_full_path}}{% endblock %}
+
+{% block content %}
+	<div class="results">
+		<h3>Результаты поиска</h3>
+		{% if teacher_list %}
+		<table class="search-results">
+			<tr>
+				<th>ФИО</th>
+				<th>Должность</th>
+				<th>Учёная степень</th>
+				<th>Аудитория</th>
+			</tr>
+			{% for teacher in teacher_list %}
+			<tr>
+				<td><a href="{% url 'info:detail' teacher.id %}" class="teacher">{{teacher.name}}</a></td>
+				<td>{{teacher.position}}</td>
+				<td>{% if teacher.education %}{{teacher.education}}{% else %}нет{% endif %}</td>
+				<td>{{teacher.room}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<ul><li>Не найдено</li></ul>
+		{% endif %}
+	</div>
+{% endblock %}

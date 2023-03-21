@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+<head>
+    <title>{% block title %}{% endblock %}Кафедра философии и культурологии Востока МшГУ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'info/styles.css' %}">
+</head>
+<body> 
+    <div class="header">
+        <div class="high-header">
+            <div class="header-h1">{% block header %}<a href="{% url 'info:index' %}" class="header-link"><h1>Магнитошахтинский государственный университет</h1></a>{% endblock %}</div><br>
+            <div class="header-h4"><h4 class="subheader">Кафедра философии и культурологии Востока</h4></div>
+        </div>
+        <div class="header-right">
+            {% block login_button %}
+                {% if user.is_authenticated %}
+                <a href="/logout/?next={% block next_logout %}{% url 'info:index' %}{% endblock %}" class="header-link search">Выход</a>
+                {% else %}
+                <a href="/login/?next={% block next_login %}{% url 'info:index' %}{% endblock %}" class="header-link search">Вход</a>
+                {% endif %}
+            {% endblock %}
+            <a href="{% url 'info:search' %}" class="header-link search">Поиск преподавателей</a>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

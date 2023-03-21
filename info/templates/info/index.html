@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header%}<h1 class = "title">Магнитошахтинский государственный университет</h1>{% endblock %}
+
+{% block content %}
+	<div class="main-list">
+		<h3>Список преподавателей</h3>
+		{% if teacher_list %}
+		<ol>
+			{% for teacher in teacher_list %}
+			<li><a href="{% url 'info:detail' teacher.id %}" class="teacher">{{teacher.name}}</a></li>
+			{% endfor %}
+		</ol>
+		{% else %}
+		<p>В системе нет преподавателей.</p>
+		{% endif %}
+	</div>
+{% endblock %}
+
+{% block next_link %}{{request.path}}{% endblock %}

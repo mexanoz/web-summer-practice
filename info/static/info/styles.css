@@ -1,0 +1,34 @@
+body {padding: 0; margin: 0; border: 0; font-family: "Cantarell", Helvetica, sans-serif;}
+div, a {padding: 0; margin: 0; border: 0;}
+a {display: inline;}
+table, th, td {border: 1px solid black; border-collapse: collapse;}
+.header {color: white; background-color: #2b4fd6; padding: 10px;}
+.high-header {line-height: 30px; display: inline-block;}
+.header-h1 {display: inline;}
+h1 {font-size: 28px; display: inline;}
+.header-h4 {display: inline;}
+h4 {display: inline;}
+.header-right {float: right;}
+.header-right a {display: block; margin: 8px; text-align: end;}
+a.search {vertical-align: sub;}
+a.header-link:link, a.header-link:visited {color: white; text-decoration: none;}
+a.search:hover, a.search:active {text-decoration: underline;}
+.subheader {margin: 0;}
+.main-list, .results {padding: 10px;}
+a.teacher:link, a.teacher:visited {color: #2b4fd6;}
+.info-header {margin-top: 10px;}
+.info-header img {margin-bottom: 10px;}
+.info-header-text {display: inline-block;}
+.info-text {clear: left;}
+img.teacher-photo {float: left; width: 150px; margin-right: 10px;}
+.forms div {float: left; margin: 10px;}
+.form_submit {display: block; clear: left;}
+.form_name label {margin-top: 16px; display: block;}
+.info-header, .info-text {padding: 0 10px;}
+.login-error {margin: 5px; background-color: #db737366; border: solid 2px red; border-radius: 5px; display: inline-block;}
+.login-table, .login-table td {border-style: hidden; margin: 10px;}
+.login-button {margin: 10px;}
+.search-results, .search-results th, .search-results td {border: 1px solid black; border-collapse: collapse;}
+form.update-form p {margin: 10px;}
+a.update-button {color: white; background-color: #2b4fd6; padding: 10px; float: right; text-decoration: none;}
+a.update-button:hover, a.update-button:active {text-decoration: underline;}

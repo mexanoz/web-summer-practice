@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля – {{teacher.name}} – {% endblock %}
+
+{% block next_logout %}{% url 'info:index' %}{% endblock %}
+{% block next_login %}{% url 'info:update' teacher.id %}{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <form class="update-form" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="login-button" type="submit" value="Сохранить">
+    </form>
+    {% else %}
+    <p class="login-error">Для редактирования профилей необходимо авторизоваться в системе.</p>
+    {% endif %}
+{% endblock %}
